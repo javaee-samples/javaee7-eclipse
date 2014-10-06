@@ -1,29 +1,30 @@
 Java EE 7 using Eclipse
 =======================
 
-# Basic Maven project creation
-
-# Deploying on WildFly
-
-# JAX-RS
-## Wizards, content assist, validation, navigation
-
-# CDI
-## Wizards, content assist, validation, navigation (open the bean producer from the @Inject annotation for example)
-
-# JSF
-## EL content assist in XHTML, navigation from/to bean, search usage, refactoring
-## New JSF project wizard (JSF 2.2 or older ?)
-## Composite component code assist
-
-# Java EE 7 and OpenShift
-
-# Java EE 7 and Forge
-## Configure JPA 2.1
-## Generate Batch Job XML
-
-## Continuous Delivery
-
-# Misc
-## LiveReload
+* Basic Maven project creation
+* Deploying on WildFly
+* JAX-RS
+** Wizards
+** Content assist
+** Validation
+** Navigation
+* CDI
+** Wizards
+** Content assist
+** Validation
+** Navigation (open the bean producer from the @Inject annotation for example)
+* JSF
+** EL content assist in XHTML
+** Navigation from/to bean
+** Search usage
+** Refactoring
+** New JSF project wizard (JSF 2.2 or older ?)
+** Composite component code assist
+* Java EE 7 and OpenShift
+* Java EE 7 and Forge
+** Configure JPA 2.1
+** Generate Batch Job XML
+** Continuous Delivery
+* Misc
+** LiveReload
 
