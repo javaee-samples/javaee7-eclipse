@@ -9,23 +9,34 @@ Java EE 7 using Eclipse
 ** Validation
 ** Navigation
 * CDI
-** Wizards
-** Content assist
-** Validation
-** Navigation (open the bean producer from the @Inject annotation for example)
+** Wizards:
+http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Creating_a_CDI_Web_Project.html[New CDI Web Project Wizard],
+http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Wizards_and_Dialogs.html#d0e555[CDI Wizards]
+** Content assist: CDI Named Beans are available in JSF EL #{} content assist in XHTML/Java/XML files (See JSF)
+** Validation:
+http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Validation.html
+** Navigation (open the bean producer from the @Inject annotation for example):
+http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Hyperlink_Navigation.html[Java source navigation], from EL #{} to CDI bean (See JSF)
+** Open CDI Named bean: http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html_single/index.html#d0e597
+** Beans.xml editor: Content assist, Navigation, Validation
+http://docs.jboss.org/tools/whatsnew/cdi/cdi-news-3.2.0.Beta1.html
+** Search usage: https://issues.jboss.org/browse/JBIDE-8705[Injection Points], EL #{} (See JSF)
 * JSF
-** EL content assist in XHTML
+** EL content assist in XHTML: http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.3.0.M3.html
 ** Navigation from/to bean
 ** Search usage
-** Refactoring
-** New JSF project wizard (JSF 2.2 or older ?)
-** Composite component code assist
-** Open CDI Named bean: http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html_single/index.html#d0e597
+** Refactoring:
+http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.M1.html
+** New JSF project wizard (JSF 2.2 or older)
+** Composite component code assist:
+https://issues.jboss.org/browse/JBIDE-4970, http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.Beta2.html, Validation and refactoring are also available
+** EL Validation: http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.M2.html
 * Java EE 7 and OpenShift
 * Java EE 7 and Forge
 ** Configure JPA 2.1
 ** Generate Batch Job XML
 ** Continuous Delivery
 * Misc
-** LiveReload
+** LiveReload:
+http://docs.jboss.org/tools/whatsnew/livereload/livereload-news-1.0.0.Alpha2.html
 
