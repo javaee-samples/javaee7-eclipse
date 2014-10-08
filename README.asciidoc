@@ -20,6 +20,7 @@ Java EE 7 using Eclipse
 ** Refactoring
 ** New JSF project wizard (JSF 2.2 or older ?)
 ** Composite component code assist
+** Open CDI Named bean: http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html_single/index.html#d0e597
 * Java EE 7 and OpenShift
 * Java EE 7 and Forge
 ** Configure JPA 2.1
