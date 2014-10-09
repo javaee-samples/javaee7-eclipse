@@ -13,7 +13,7 @@ Java EE 7 using Eclipse
 *** ``Run on Server'' does not show the generated Servlet. Is it required ? Incremental deployment ?
 *** Restarting WildFly shows the Servlet, bug ?
 * Basic Maven project creation
-* Deploying on WildFly
+** Search for `wildfly-javaee7` archetype - there are 4, which one to choose and when ?
 * JAX-RS
 ** Wizards
 ** Content assist
