@@ -10,7 +10,7 @@ Java EE 7 using Eclipse
 *** Change content on `index.html` and show LiveReload
 ** Servlet
 *** Add a new Servlet
-*** ``Run on Server'' does not show the generated Servlet ??
+*** ``Run on Server'' does not show the generated Servlet. Is it required ? Incremental deployment ?
 *** Restarting WildFly shows the Servlet, bug ?
 * Basic Maven project creation
 * Deploying on WildFly
