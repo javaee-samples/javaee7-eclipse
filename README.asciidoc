@@ -10,8 +10,44 @@ Java EE 7 using Eclipse
 *** Change content on `index.html` and show LiveReload
 ** Servlet
 *** Add a new Servlet
-*** ``Run on Server'' does not show the generated Servlet. Is it required ? Incremental deployment ?
-*** Restarting WildFly shows the Servlet, bug ?
+*** In Servers tab, select the module, right-click and select ``Restart'' to restart the module
+*** Show http://localhost:8080/helloworld/HelloServlet
+** Persistence
+*** Right-click on project, select ``Properties'', search for ``facet'', enable ``JPA'', click on ``Apply'', talk about ``Further configuration available'' and default data source
+** Create a new entity
+** Add a primary key
++
+[source, java]
+----
+@Id
+private int id;
+----
++
+** Generate Getter/Setter by clicking ``Source'', ``Getters and Setters''.
+** Start H2 console as:
++
+[source,text]
+----
+java -jar ./modules/system/layers/base/com/h2database/h2/main/h2-1.3.173.jar
+----
++
+** Add the following properties to `persistence.xml`:
++
+[source.xml]
+----
+<properties>
+	<property name="javax.persistence.schema-generation.database.action"
+		value="drop-and-create" />
+	<property name="javax.persistence.schema-generation.create-source"
+		value="metadata" />
+	<property name="javax.persistence.schema-generation.drop-source"
+		value="metadata" />
+</properties>
+----
++
+
+
+
 * Basic Maven project creation
 ** Search for `wildfly-javaee7` archetype - there are 4, which one to choose and when ?
 * JAX-RS
