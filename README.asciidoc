@@ -1,36 +1,31 @@
 Java EE 7 using Eclipse
 =======================
 
+Project creation
+----------------
+
 * Create a simple Dynamic Web Project
-** Basic app
-*** Choose the module version as ``3.1''
-*** Add a new configuration for WildFly
-*** Add `index.html` in ``WebContent''
-*** ``Run as'', ``Run on Server''
-*** Change content on `index.html` and show LiveReload
-** Servlet
-*** Add a new Servlet
-*** In Servers tab, select the module, right-click and select ``Restart'' to restart the module
-*** Show http://localhost:8080/helloworld/HelloServlet
-** Persistence
-*** Right-click on project, select ``Properties'', search for ``facet'', enable ``JPA'', click on ``Apply'', talk about ``Further configuration available'' and default data source
-** Create a new entity
-** Add a primary key
-+
-[source, java]
-----
-@Id
-private int id;
-----
-+
-** Generate Getter/Setter by clicking ``Source'', ``Getters and Setters''.
-** Copy the https://github.com/jboss-developer/jboss-eap-quickstarts/blob/6.3.0.GA/h2-console/h2console.war?raw=true[H2 console war] to the server standalone/deployments directory.
-** Start the server and access http://localhost:8080/h2console
-** You need to enter the JDBC URL, and credentials. To access the "test" database your application uses, enter these details:
-*** JDBC URL: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
-*** User Name: sa
-*** Password: sa
-** Add the following properties to `persistence.xml`:
+** Choose the module version as ``3.1''
+** Add a new configuration for WildFly
+** Add `index.html` in ``WebContent''
+** ``Run as'', ``Run on Server''
+** Change content on `index.html` and show LiveReload
+
+Servlet
+-------
+
+* Add a new Servlet
+** In Servers tab, select the module, right-click and select ``Restart'' to restart the module
+** Show http://localhost:8080/helloworld/HelloServlet
+
+Persistence
+-----------
+
+* Right-click on project, select ``Properties'', search for ``facet'', enable ``JPA'', click on ``Apply'', talk about ``Further configuration available'' and default data source
+* Create a new entity
+* Add a primary key in the wizard. Use `long` datatype and name as `id`.
+* Generate Getter/Setter by clicking ``Source'', ``Getters and Setters''.
+* Add the following properties to `persistence.xml`:
 +
 [source.xml]
 ----
@@ -46,6 +41,25 @@ private int id;
 </properties>
 ----
 +
+* Show ``server console'' when the application is deployed. Show the generated SQL statements.
+
+Setup console to watch database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Download https://github.com/jboss-developer/jboss-eap-quickstarts/blob/6.3.0.GA/h2-console/h2console.war?raw=true[H2 console war] to the server `standalone/deployments` directory
++
+[source,text]
+----
+curl -L https://github.com/jboss-developer/jboss-eap-quickstarts/blob/6.3.0.GA/h2-console/h2console.war?raw=true -o h2console.war
+----
++
+* Start the server and access http://localhost:8080/h2console
+* Enter the JDBC URL and credentials. To access the "test" database your application uses, enter these details (everything else is default):
+** JDBC URL: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+** User Name: sa
+** Password: sa
+
+** 
 
 
 
