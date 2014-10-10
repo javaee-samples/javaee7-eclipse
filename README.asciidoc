@@ -41,6 +41,8 @@ private int id;
 		value="metadata" />
 	<property name="javax.persistence.schema-generation.drop-source"
 		value="metadata" />
+	<property name="hibernate.show_sql" value="true"/>
+	<property name="hibernate.format_sql" value="true"/>		
 </properties>
 ----
 +
