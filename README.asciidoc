@@ -206,6 +206,8 @@ https://issues.jboss.org/browse/JBIDE-4970, http://docs.jboss.org/tools/whatsnew
 OpenShift
 ---------
 
+* Create a new server adapter from ``OpenShift Explorer''
+
 Forge
 -----
 
