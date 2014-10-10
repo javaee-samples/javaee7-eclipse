@@ -24,13 +24,12 @@ private int id;
 ----
 +
 ** Generate Getter/Setter by clicking ``Source'', ``Getters and Setters''.
-** Start H2 console as:
-+
-[source,text]
-----
-java -jar ./modules/system/layers/base/com/h2database/h2/main/h2-1.3.173.jar
-----
-+
+** Copy the https://github.com/jboss-developer/jboss-eap-quickstarts/blob/6.3.0.GA/h2-console/h2console.war?raw=true[H2 console war] to the server standalone/deployments directory.
+** Start the server and access http://localhost:8080/h2console
+** You need to enter the JDBC URL, and credentials. To access the "test" database your application uses, enter these details:
+*** JDBC URL: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+*** User Name: sa
+*** Password: sa
 ** Add the following properties to `persistence.xml`:
 +
 [source.xml]
