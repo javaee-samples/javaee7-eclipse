@@ -22,9 +22,42 @@ Persistence
 -----------
 
 * Right-click on project, select ``Properties'', search for ``facet'', enable ``JPA'', click on ``Apply'', talk about ``Further configuration available'' and default data source
-* Create a new entity
-* Add a primary key in the wizard. Use `long` datatype and name as `id`.
+* Create a new entity `Student`
+* Add a primary key in the wizard. Use `long` datatype and `id` name.
 * Generate Getter/Setter by clicking ``Source'', ``Getters and Setters''.
+* Add `toString` implementation
+* The updated class should look like:
++
+[source, java]
+----
+@Entity
+public class Student implements Serializable {
+	   
+	@Id
+	private long id;
+	private static final long serialVersionUID = 1L;
+
+	public Student() {
+		super();
+	}   
+	
+	public Student(long id) {
+		this.id = id;
+	}
+	public long getId() {
+		return this.id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	public String toString() {
+		return "Student[" + id + "]";
+	}
+}
+----
++
 * Add the following properties to `persistence.xml`:
 +
 [source.xml]
@@ -55,21 +88,94 @@ curl -L https://github.com/jboss-developer/jboss-eap-quickstarts/blob/6.3.0.GA/h
 +
 * Start the server and access http://localhost:8080/h2console
 * Enter the JDBC URL and credentials. To access the "test" database your application uses, enter these details (everything else is default):
-** JDBC URL: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
-** User Name: sa
-** Password: sa
+** JDBC URL: `jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1`
+** User Name: `sa`
+** Password: `sa`
 
-** 
+RESTful Web Services
+--------------------
 
+* Create a JAX-RS resource `StudentEndpoint`
+** Use `Student` entity as the basis, select `create`, `findById`, `listAll` methods to be generated.
+* Add `@XmlRootElement` in `Student` entity to enable XML <-> Java conversion.
+* Add `@NamedQuery(name="findAllStudents", query="select s from Student s")` to `Student` to enable querying all students.
+* Update the class so that it looks like as shown:
++
+[source,java]
+----
+@RequestScoped
+@Path("/students")
+public class StudentEndpoint {
+	
+	@PersistenceContext EntityManager em; 
+
+	@Transactional
+	@POST
+	@Consumes({ "application/xml", "application/json", "text/plain" })
+	public void create(final long id) {
+		Student student = new Student(id);
+		em.persist(student);
+	}
+
+	@GET
+	@Path("/{id:[0-9][0-9]*}")
+	@Produces({ "application/xml", "application/json" })
+	public Response findById(@PathParam("id") final Long id) {
+		Student student = em.find(Student.class, id);
+		if (student == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		return Response.ok(student).build();
+	}
+
+	@GET
+	@Produces("application/xml")
+	public Student[] listAll(
+			@QueryParam("start") final Integer startPosition,
+			@QueryParam("max") final Integer maxResult) {
+		TypedQuery<Student> query = em.createNamedQuery("findAllStudents", Student.class);
+		final List<Student> students = query.getResultList();
+		return students.toArray(new Student[0]);
+	}
+}
+----
++
+* Use ``Advanced REST Client'' in Chrome
+** Make a GET request
+*** Add Accept: application/xml
+*** Show empty response
+** Make a POST request
+*** Payload as `1`
+*** ``Content-Type'' header to `text/plain`
+** Make a GET request to validate the data is posted
+** Change `create` method to add Bean Validation constraint
++
+[source,java]
+----
+public void create(@Min(10) final long id) {
+----
++
+** Make a POST request with payload as `1` and show an error is being received
+* Add a new Servlet and the following code in `doGet`
++
+[source,java]
+----
+ServletOutputStream out = response.getOutputStream();
+out.print("Retrieving results ...");
+Client client = ClientBuilder.newClient();
+Student[] result = client
+.target("http://localhost:8080/helloworld/rest/students")
+.request()
+.get(Student[].class);
+for (Student s : result) {
+	out.print(s.toString());
+}
+----
+* Access the Servlet in the browser to show the results
 
 
 * Basic Maven project creation
 ** Search for `wildfly-javaee7` archetype - there are 4, which one to choose and when ?
-* JAX-RS
-** Wizards
-** Content assist
-** Validation
-** Navigation
 * CDI
 ** Wizards:
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Creating_a_CDI_Web_Project.html[New CDI Web Project Wizard],
