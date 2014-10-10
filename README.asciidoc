@@ -9,14 +9,14 @@ Project creation
 ** Add a new configuration for WildFly
 ** Add `index.html` in ``WebContent''
 ** ``Run as'', ``Run on Server''
-** Change content on `index.html` and show LiveReload
+** Change content on `index.html` and show http://docs.jboss.org/tools/whatsnew/livereload/livereload-news-1.0.0.Alpha2.html[LiveReload]
 
 Servlet
 -------
 
 * Add a new Servlet
 ** In Servers tab, select the module, right-click and select ``Restart'' to restart the module
-** Show http://localhost:8080/helloworld/HelloServlet
+** Show http://localhost:8080/helloworld/TestServlet
 
 Persistence
 -----------
@@ -156,7 +156,7 @@ public void create(@Min(10) final long id) {
 ----
 +
 ** Make a POST request with payload as `1` and show an error is being received
-* Add a new Servlet and the following code in `doGet`
+* Edit `doGet` of `TestServlet to match the code given below
 +
 [source,java]
 ----
@@ -171,40 +171,53 @@ for (Student s : result) {
 	out.print(s.toString());
 }
 ----
-* Access the Servlet in the browser to show the results
+* Access the Servlet in the browser to show the results and explain JAX-RS Client API
 
 
-* Basic Maven project creation
-** Search for `wildfly-javaee7` archetype - there are 4, which one to choose and when ?
-* CDI
-** Wizards:
+CDI
+---
+
+* Wizards:
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Creating_a_CDI_Web_Project.html[New CDI Web Project Wizard],
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Wizards_and_Dialogs.html#d0e555[CDI Wizards]
-** Content assist: CDI Named Beans are available in JSF EL #{} content assist in XHTML/Java/XML files (See JSF)
-** Validation:
+* Content assist: CDI Named Beans are available in JSF EL #{} content assist in XHTML/Java/XML files (See JSF)
+* Validation:
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Validation.html
-** Navigation (open the bean producer from the @Inject annotation for example):
+* Navigation (open the bean producer from the @Inject annotation for example):
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Hyperlink_Navigation.html[Java source navigation], from EL #{} to CDI bean (See JSF)
-** Open CDI Named bean: http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html_single/index.html#d0e597
-** Beans.xml editor: Content assist, Navigation, Validation
+* Open CDI Named bean: http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html_single/index.html#d0e597
+* Beans.xml editor: Content assist, Navigation, Validation
 http://docs.jboss.org/tools/whatsnew/cdi/cdi-news-3.2.0.Beta1.html
-** Search usage: https://issues.jboss.org/browse/JBIDE-8705[Injection Points], EL #{} (See JSF)
-* JSF
-** EL content assist in XHTML: http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.3.0.M3.html
-** Navigation from/to bean
-** Search usage
-** Refactoring:
+* Search usage: https://issues.jboss.org/browse/JBIDE-8705[Injection Points], EL #{} (See JSF)
+
+JavaServer Faces
+----------------
+
+* EL content assist in XHTML: http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.3.0.M3.html
+* Navigation from/to bean
+* Search usage
+* Refactoring:
 http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.M1.html
-** New JSF project wizard (JSF 2.2 or older)
-** Composite component code assist:
+* New JSF project wizard (JSF 2.2 or older)
+* Composite component code assist:
 https://issues.jboss.org/browse/JBIDE-4970, http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.Beta2.html, Validation and refactoring are also available
-** EL Validation: http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.M2.html
-* Java EE 7 and OpenShift
-* Java EE 7 and Forge
-** Configure JPA 2.1
-** Generate Batch Job XML
-** Continuous Delivery
-* Misc
-** LiveReload:
-http://docs.jboss.org/tools/whatsnew/livereload/livereload-news-1.0.0.Alpha2.html
+* EL Validation: http://docs.jboss.org/tools/whatsnew/jst/jst-news-3.2.0.M2.html
+
+OpenShift
+---------
+
+Forge
+-----
+
+* Switch to JBoss perspective
+* Go to ``Forge Console'', click on play button to start it
+* `project-new --named sample`
+* `javaee-setup --javaEEVersion 7`
+* `jpa-setup --jpaVersion 2.1`
+* Install plugin: `addon-install-from-git --url https://github.com/forge/addon-batch`
+** Create new Job XML: `batch-new-jobxml --jobXML myJob.xml --reader org.svcc.MyReader --writer org.svcc.MyWriter`
+
+Continuous Delivery
+-------------------
+
 
