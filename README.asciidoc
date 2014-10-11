@@ -177,6 +177,23 @@ for (Student s : result) {
 CDI
 ---
 
+* Generate an interface `Greeting`
++
+[source,java]
+----
+public interface Greeting {
+	public String sayHello();
+}
+----
++
+* Create a new class `SimpleGreeting`, implement the interface
+* Inject the bean in Servlet as `@Inject Greeting greeting;`
+* Print the output as `response.getOutputStream().print(greeting.sayHello());`
+* Show ``New missing/unsatisfied dependencies'' error and explain default injection
+* Add `@Dependent` on bean
+* Create a new class `FancyGreeting`, implement the interface, add `@Dependent`
+* Create a new qualifier using the wizard
+
 * Wizards:
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Creating_a_CDI_Web_Project.html[New CDI Web Project Wizard],
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Wizards_and_Dialogs.html#d0e555[CDI Wizards]
