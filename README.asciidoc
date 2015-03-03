@@ -206,6 +206,14 @@ http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-C
 * Beans.xml editor: Content assist, Navigation, Validation
 http://docs.jboss.org/tools/whatsnew/cdi/cdi-news-3.2.0.Beta1.html
 * Search usage: https://issues.jboss.org/browse/JBIDE-8705[Injection Points], EL #{} (See JSF)
+* CDI 1.2 support was introduced in JBoss Tools 4.3.0.Alpha1: http://tools.jboss.org/documentation/whatsnew/jbosstools/4.3.0.Alpha1.html#cdi
+But it's mostly about showing CDI 1.2 as available in our wizards (New CDI Project wizard for example) + minor bug fixing. In JBoss Tools 4.2 (Eclipse Luna) you can use CDI 1.1 in wizards for CDI 1.2 projects since 1.2 is just a maintenance release and CDI Tools relays on actual CDI jars from the project's class path. 
+
+Batch
+-----
+
+* Batch job XML editor - http://tools.jboss.org/documentation/whatsnew/jbosstools/4.3.0.Alpha1.html#batch - *Available in JBoss Tools 4.3.0.Alpha1*
+* Upcoming 4.3.0.Alpha2 features: Validation, Content Assist, Navigation, - https://issues.jboss.org/browse/JBIDE-18857
 
 JavaServer Faces
 ----------------
@@ -238,5 +246,4 @@ Forge
 
 Continuous Delivery
 -------------------
-
 
