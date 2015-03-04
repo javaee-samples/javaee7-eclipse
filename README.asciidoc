@@ -144,7 +144,7 @@ public class StudentEndpoint {
 ----
 +
 * Use ``Advanced REST Client'' in Chrome
-** Make a GET request to http://localhost:8080/EclipseCon/rest/students
+** Make a GET request to http://localhost:8080/HelloJavaEE7/rest/students
 *** Add Accept: application/xml
 *** Show empty response
 ** Make a POST request
@@ -213,7 +213,10 @@ public class SimpleGreeting implements Greeting {
 * Show ``New missing/unsatisfied dependencies'' error and explain default injection
 * Add `@Dependent` on bean
 * Create a new class `FancyGreeting`, implement the interface, add `@Dependent`
-* Create a new qualifier using the wizard
+* Create a new qualifier using ``New'', ``Qualifier Annotation Type''
+
+Advanced CDI
+------------
 
 * Wizards:
 http://docs.jboss.org/tools/4.1.x.Final/en/cdi_tools_reference_guide/html/chap-CDI_Tools_Reference_Guide-Creating_a_CDI_Web_Project.html[New CDI Web Project Wizard],
@@ -233,7 +236,9 @@ But it's mostly about showing CDI 1.2 as available in our wizards (New CDI Proje
 Batch
 -----
 
-* Batch job XML editor - http://tools.jboss.org/documentation/whatsnew/jbosstools/4.3.0.Alpha1.html#batch - *Available in JBoss Tools 4.3.0.Alpha1*
+* Open https://github.com/javaee-samples/javaee7-samples/[Java EE 7 Samples project] and show Job XML
+* http://tools.jboss.org/documentation/whatsnew/jbosstools/4.3.0.Alpha1.html#batch[Batch job XML editor]
+** Available in JBoss Tools 4.3.0.Alpha1
 * Upcoming 4.3.0.Alpha2 features: Validation, Content Assist, Navigation, - https://issues.jboss.org/browse/JBIDE-18857
 
 JavaServer Faces
