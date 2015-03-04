@@ -21,8 +21,9 @@ Servlet
 Persistence
 -----------
 
-* Right-click on project, select ``Properties'', search for ``facet'', enable ``JPA'', click on ``Apply'', talk about ``Further configuration available'' and default data source
-* Create a new entity `Student`
+* Right-click on project, select ``Properties'', search for ``facet'', enable ``JPA'', click on ``Apply''
+** Talk about ``Further configuration available'' and default data source (no configuration required)
+* Right-click on project, select ``New'', ``JPA Entity'' and give the name as `Student`
 * Add a primary key in the wizard. Use `long` datatype and `id` name.
 * Generate Getter/Setter by clicking ``Source'', ``Getters and Setters''.
 * Add `toString` implementation
@@ -97,6 +98,7 @@ RESTful Web Services
 --------------------
 
 * Create a JAX-RS resource `StudentEndpoint`
+** `rest.RestApplication` is added and specifies the base URI for REST resoures as `/rest`.
 ** Use `Student` entity as the basis, select `create`, `findById`, `listAll` methods to be generated.
 * Add `@XmlRootElement` in `Student` entity to enable XML <-> Java conversion.
 * Add `@NamedQuery(name="findAllStudents", query="select s from Student s")` to `Student` to enable querying all students.
@@ -142,22 +144,14 @@ public class StudentEndpoint {
 ----
 +
 * Use ``Advanced REST Client'' in Chrome
-** Make a GET request
+** Make a GET request to http://localhost:8080/EclipseCon/rest/students
 *** Add Accept: application/xml
 *** Show empty response
 ** Make a POST request
 *** Payload as `1`
 *** ``Content-Type'' header to `text/plain`
 ** Make a GET request to validate the data is posted
-** Change `create` method to add Bean Validation constraint
-+
-[source,java]
-----
-public void create(@Min(10) final long id) {
-----
-+
-** Make a POST request with payload as `1` and show an error is being received
-* Edit `doGet` of `TestServlet to match the code given below
+* Edit `doGet` of `TestServlet` to match the code given below
 +
 [source,java]
 ----
@@ -165,7 +159,7 @@ ServletOutputStream out = response.getOutputStream();
 out.print("Retrieving results ...");
 Client client = ClientBuilder.newClient();
 Student[] result = client
-.target("http://localhost:8080/helloworld/rest/students")
+.target("http://localhost:8080/HelloJavaEE7/rest/students")
 .request()
 .get(Student[].class);
 for (Student s : result) {
@@ -173,6 +167,19 @@ for (Student s : result) {
 }
 ----
 * Access the Servlet in the browser to show the results and explain JAX-RS Client API
+
+
+Bean Validation
+---------------
+
+* Change `create` method to add Bean Validation constraint
++
+[source,java]
+----
+public void create(@Min(10) final long id) {
+----
++
+* Make a POST request with payload as `1` and show an error is being received
 
 
 CDI
@@ -187,7 +194,20 @@ public interface Greeting {
 }
 ----
 +
-* Create a new class `SimpleGreeting`, implement the interface
+* Create a new class `SimpleGreeting`, implement the interface as:
++
+[source, java]
+----
+public class SimpleGreeting implements Greeting {
+
+	@Override
+	public String sayHello() {
+		return "Hello World";
+	}
+
+}
+----
++
 * Inject the bean in Servlet as `@Inject Greeting greeting;`
 * Print the output as `response.getOutputStream().print(greeting.sayHello());`
 * Show ``New missing/unsatisfied dependencies'' error and explain default injection
