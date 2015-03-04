@@ -237,8 +237,7 @@ Batch
 -----
 
 * Open https://github.com/javaee-samples/javaee7-samples/[Java EE 7 Samples project] and show Job XML
-* http://tools.jboss.org/documentation/whatsnew/jbosstools/4.3.0.Alpha1.html#batch[Batch job XML editor]
-** Available in JBoss Tools 4.3.0.Alpha1
+* http://tools.jboss.org/documentation/whatsnew/jbosstools/4.3.0.Alpha1.html#batch[Batch job XML editor] - available in JBoss Tools 4.3.0.Alpha1
 * Upcoming 4.3.0.Alpha2 features: Validation, Content Assist, Navigation, - https://issues.jboss.org/browse/JBIDE-18857
 
 JavaServer Faces
@@ -258,6 +257,7 @@ OpenShift
 ---------
 
 * Create a new server adapter from ``OpenShift Explorer''
+* More details at http://blog.arungupta.me/getting-started-wildfly-openshift-jboss-developer-studio/
 
 Forge
 -----
@@ -269,6 +269,8 @@ Forge
 * `jpa-setup --jpaVersion 2.1`
 * Install plugin: `addon-install-from-git --url https://github.com/forge/addon-batch`
 ** Create new Job XML: `batch-new-jobxml --jobXML myJob.xml --reader org.svcc.MyReader --writer org.svcc.MyWriter`
+* More details about Batch and Forge at: http://blog.arungupta.me/javaee7-batch-addon-jboss-forge-part1/
+* More details about other technologies at: http://blog.arungupta.me/rapid-javaee-development-forge2/
 
 Continuous Delivery
 -------------------
