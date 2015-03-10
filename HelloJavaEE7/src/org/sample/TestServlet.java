@@ -18,30 +18,30 @@ import javax.ws.rs.client.ClientBuilder;
 @WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	@Inject Greeting greeting;
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TestServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	@Inject
+	Greeting greeting;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public TestServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getOutputStream().println(greeting.sayHello());
-		
+
 		ServletOutputStream out = response.getOutputStream();
 		out.print("Retrieving results ...");
 		Client client = ClientBuilder.newClient();
-		Student[] result = client
-		.target("http://localhost:8080/HelloJavaEE7/rest/students")
-		.request()
-		.get(Student[].class);
+		Student[] result = client.target("http://localhost:8080/HelloJavaEE7/rest/students").request()
+				.get(Student[].class);
 		for (Student s : result) {
 			out.print(s.toString());
 		}
@@ -49,9 +49,11 @@ public class TestServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
 		doGet(request, response);
 	}
 
