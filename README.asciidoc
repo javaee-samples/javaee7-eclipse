@@ -32,6 +32,8 @@ Persistence
 [source, java]
 ----
 @Entity
+@XmlRootElement
+@NamedQuery(name="findAllStudents", query="select s from Student s")
 public class Student implements Serializable {
 	   
 	@Id
@@ -100,8 +102,8 @@ RESTful Web Services
 * Create a JAX-RS resource `StudentEndpoint`
 ** `rest.RestApplication` is added and specifies the base URI for REST resoures as `/rest`.
 ** Use `Student` entity as the basis, select `create`, `findById`, `listAll` methods to be generated.
-* Add `@XmlRootElement` in `Student` entity to enable XML <-> Java conversion.
-* Add `@NamedQuery(name="findAllStudents", query="select s from Student s")` to `Student` to enable querying all students.
+* `@XmlRootElement` in `Student` entity enables XML <-> Java conversion.
+* `@NamedQuery(name="findAllStudents", query="select s from Student s")` in `Student` enables querying all students.
 * Update the class so that it looks like as shown:
 +
 [source,java]
